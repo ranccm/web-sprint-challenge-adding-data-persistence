@@ -5,18 +5,12 @@ module.exports = {
     addTask
   };
 
-// function getTask() {
-//   return db("tasks").join("projects", "tasks.project_id", "projects.id" )
-//   .where("projects.id")
-//   .select("tasks.id", "tasks.description", "projects.project_name")
-// }
-
 
 function getTask(id) {
     if (id) {
-    return db('tasks').join("projects", "tasks.project_id", "projects.id" )
-      .where("projects.id", { id })
-      .select('task.id', 'task.description as task', 'project.project_name as project')
+    return db('tasks')
+      .where({ id })
+      .first
   } else {
     return db('tasks')
   }}
